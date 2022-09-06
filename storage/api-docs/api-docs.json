@@ -1,0 +1,328 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "lead-project swagger documentation",
+        "description": "REST API documentation",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://lead-project.test/api/v1",
+            "description": "lead-project API Server"
+        }
+    ],
+    "paths": {
+        "/companies": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get list of companies you work for",
+                "description": "Returns list of companies you work for",
+                "operationId": "getCompanies",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/companies/all": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get list of all the companies with their name and id",
+                "description": "Get list of all the companies with their name and id",
+                "operationId": "getAllCompanies",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Company teaser model",
+                                    "required": [
+                                        "name"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "title": "ID",
+                                            "type": "integer",
+                                            "readOnly": "true",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "title": "Name",
+                                            "type": "string",
+                                            "example": "Company name"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "xml": {
+                                        "name": "CompanyTeaser"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/{companyId}/leads": {
+            "get": {
+                "tags": [
+                    "Leads"
+                ],
+                "summary": "Get list of leads",
+                "description": "Returns list of leads",
+                "operationId": "getLeads",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Lead"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/leads": {
+            "post": {
+                "tags": [
+                    "Leads"
+                ],
+                "summary": "Store new lead",
+                "operationId": "storeLead",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Lead"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Company": {
+                "title": "Company model",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string",
+                        "example": "Company name"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "type": "string",
+                        "example": "Company description"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "type": "string",
+                        "format": "date",
+                        "readOnly": "true",
+                        "example": "2020-07-21 16:00:01"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "type": "string",
+                        "format": "date",
+                        "readOnly": "true",
+                        "example": "2020-07-22 12:20:41"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Company"
+                }
+            },
+            "Lead": {
+                "title": "Lead model",
+                "required": [
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "planned_date",
+                    "company_id"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "type": "string",
+                        "format": "email",
+                        "example": "john.doe@gmail.com"
+                    },
+                    "first_name": {
+                        "title": "First name",
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "last_name": {
+                        "title": "Last name",
+                        "type": "string",
+                        "example": "Doe"
+                    },
+                    "company_id": {
+                        "title": "Company ID",
+                        "description": "Company that owns the lead",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "planned_date": {
+                        "title": "Planned date",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2021-07-21"
+                    },
+                    "domain_name": {
+                        "title": "Domain name",
+                        "type": "string",
+                        "example": "lead-project.test"
+                    },
+                    "path": {
+                        "title": "Path",
+                        "type": "string",
+                        "example": "/leads/add"
+                    },
+                    "client_ip_address": {
+                        "title": "Client ip address",
+                        "type": "string",
+                        "example": "127.0.0.1"
+                    },
+                    "user_agent_string": {
+                        "title": "User agent string",
+                        "type": "string",
+                        "example": ""
+                    },
+                    "extra_attributes": {
+                        "title": "Extra attributes",
+                        "description": "JSON string with an encoded object",
+                        "type": "string",
+                        "format": "json",
+                        "writeOnly": "true",
+                        "example": "JSON string with an encoded object",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "type": "string",
+                        "format": "date",
+                        "readOnly": "true",
+                        "example": "2020-07-21 16:00:01"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "type": "string",
+                        "format": "date",
+                        "readOnly": "true",
+                        "example": "2020-07-22 12:20:41"
+                    },
+                    "companies": {
+                        "title": "Companies",
+                        "description": "All companies that can view this lead.",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "title": "ID",
+                                    "type": "integer",
+                                    "readOnly": "true",
+                                    "example": "1"
+                                },
+                                "name": {
+                                    "title": "Name",
+                                    "type": "string",
+                                    "example": "Company name"
+                                },
+                                "created_at": {
+                                    "title": "Created at",
+                                    "type": "string",
+                                    "format": "date",
+                                    "readOnly": "true",
+                                    "example": "2020-07-21 16:00:01"
+                                },
+                                "updated_at": {
+                                    "title": "Updated at",
+                                    "type": "string",
+                                    "format": "date",
+                                    "readOnly": "true",
+                                    "example": "2020-07-22 12:20:41"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Lead"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Leads",
+            "description": "API Endpoints of Leads"
+        }
+    ],
+    "security": [
+        []
+    ]
+}

@@ -1,0 +1,274 @@
+
+.rounded-image-container{
+    position: relative;
+    //width zelf erop zetten
+    img{
+        object-fit: cover;
+        position: absolute; 
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0; 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        object-position: center;
+    }
+}
+
+.rounded-image-container:after{
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.nav-bar-item{
+    @apply flex items-center mt-1 md:mt-3 py-2 mx-2 pl-2 rounded text-gray-500;
+}
+.nav-bar-item:hover{
+    @apply bg-blue-300 bg-opacity-50;
+}
+
+.nav-bar-item.selected{
+    @apply bg-blue-300 bg-opacity-50;
+}
+
+.login-input-container{
+    @apply mb-3;
+    label{
+        @apply block text-sm font-bold mb-2;
+    }
+    input{
+        @apply shadow appearance-none border rounded w-full py-2 px-3;
+    }
+    input.error{
+        @apply border-red-500;
+    }
+    span.error{
+        @apply text-red-500 font-light text-xs;
+    }
+}
+
+.search-filter{
+    @apply border-gray-400 px-4 py-0.5;
+}
+.search-filter.selected{
+    @apply bg-blue-600 text-white;
+}
+.search-filter.not-selected{
+    @apply hover:bg-blue-200 text-gray-400;
+}
+.button-primary{
+    @apply px-3 py-1 text-white bg-blue-600 rounded-lg hover:bg-blue-400 cursor-pointer;
+}
+
+.button-danger{
+    @apply py-1 px-3 rounded-md bg-red-600 text-white hover:bg-red-400;
+}
+
+.button-not-filled {
+    @apply border rounded border-gray-400 text-gray-400 px-4 py-0.5 hover:bg-blue-600 hover:border-blue-600 hover:text-white;
+}
+
+.column-container{
+    @apply xl:flex;
+    .column{
+        @apply flex-1;
+        min-width: 0;
+    }
+}
+.showCompanySubHeader{
+    @apply mb-2 mt-5;
+    h2{
+        @apply text-xl text-gray-400;
+    }
+}
+
+    
+
+.lead{
+    @apply py-4 sm:flex sm:items-center justify-between;
+    .sub-item{
+        @apply flex flex-col;
+        .value{
+            @apply order-2 sm:order-none;
+        }
+    }
+}
+.lead .sub-item .label, .employee-label{
+    @apply mt-2 sm:mt-0 text-xs text-gray-400 order-1 sm:order-none;
+}
+.employee-label{
+    @apply mt-4;
+}
+.bg-card{
+    @apply bg-white;
+}
+.card{
+    @apply bg-card rounded shadow;
+}
+.vm--modal{
+    overflow: visible !important;
+}
+.name-description-dropdown-container{
+    @apply relative;
+    ul{
+        li{
+            @apply text-gray-900 cursor-default select-none relative p-4 text-sm;
+            .checkbox-container{
+                @apply text-blue-500;
+            }
+            .description{
+                @apply text-gray-500 mt-2;
+            }
+            .checkbox-container{
+                @apply font-normal;
+            }
+        }
+        li:hover{
+            @apply bg-blue-600;
+            .checkbox-container{
+                @apply text-white visible;
+            }
+            .attribute-name{
+                @apply text-white;
+            }
+            .attribute-description{
+                @apply text-gray-100;
+            }
+        }
+    }
+}
+#totalSuccessRate{
+    z-index: 10;
+}
+canvas{
+    //background-image: url(backgroundimage.jpg);
+    background-color: transparent;
+}
+.show-lead-attribute-container{
+    @apply sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start items-center sm:border-gray-200 sm:py-5 py-2;
+    .show-lead-label{
+        @apply block capitalize text-sm font-medium text-gray-700;
+    } 
+    .show-lead-input{
+       @apply max-w-lg h-8 p-2 border outline-none block w-full shadow-sm focus:ring-indigo-500 focus:border-blue-600 sm:max-w-xs sm:text-sm border-gray-300 rounded-md;
+    }   
+}
+
+.flip-card{
+    position: relative;
+    perspective: 1000px; 
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    .front{
+        position: relative;
+    }
+    .back{
+        @apply p-6;
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%;
+        transform: rotateY(180deg);
+    }
+    .front, .back{
+        @apply  flex flex-col bg-card shadow rounded p-6;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+    }
+}
+.flip-card.turned{
+    transform: rotateY(180deg);
+}
+
+.h-15{
+    height:3.7rem;
+}
+
+#page-swapper{
+    @apply mt-4 mb-3;
+    ul{
+        li{
+            @apply inline text-gray-500 mr-3;
+            button{
+                @apply px-3 py-2;
+            }
+            button:hover{
+                @apply bg-blue-400 text-white rounded-md;
+            }
+            button.active{
+                @apply bg-blue-600 text-white rounded-md;
+            }
+        }
+    }
+}
+
+.tr-border-colors{
+    border-color: transparent transparent lightgrey transparent;
+}
+.activity-log-table{
+    text-align: left;
+}
+.remove-border-bottom{
+    border-bottom: 0 !important;
+}
+.main-row{
+    @apply border-b  tr-border-colors border-l-2;
+    td:nth-child(2)	{
+        @apply pl-2 md:pl-0;
+    }
+    td:first-child	{
+        @apply pl-2 md:pl-5;
+    }
+    td{
+        @apply py-3;
+    }
+}
+.changes-open{
+    @apply border-l-2 border-b-0 border-blue-500;
+    td{
+        @apply pb-2;
+    }
+}
+    
+.changes{
+    @apply border-b-0 border-l-2 border-blue-500 shadow-inner bg-blue-50 bg-opacity-40 shadow;
+    td{
+        @apply md:pb-5 pl-0 md:pl-8 pt-3;
+        table{
+            @apply w-full md:w-auto;
+            tr{
+                @apply border-t md:border-t-0 border-gray-400;
+                td,th{
+                    @apply pr-8 pl-2 md:pl-0 py-1;
+                }
+                td{
+                    @apply py-1;
+                }
+            }
+        }
+    }
+}
+
+.small-card-container{
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+    .card{
+        @apply p-4 flex items-center;
+        .left{
+            @apply w-1/6 flex items-center p-1.5;
+        }
+        .right{
+            @apply ml-5;
+            p:first-child {
+                @apply font-medium;
+            }
+            p:last-child {
+                @apply text-gray-400;
+            }
+        }
+    }
+}
