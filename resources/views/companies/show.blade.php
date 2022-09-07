@@ -1,19 +1,19 @@
 @extends ('layouts.app')
 @section('content')
-<header class="mb-4 xl:flex xl:items-center">
+<header class="mb-4 2xl:flex 2xl:items-center">
     <div class="flex justify-between items-center mr-4 flex-1">
         <h1 class="text-3xl text-gray-400 inline">Overview</h1>
         <button @click.prevent="$modal.show('edit-company')" class="button-not-filled">Edit</button>
     </div>
-    <div class="xl:ml-4 xl:flex-1 mt-4 mb-2">
-        <div class="xl:float-right">
+    <div class="2xl:ml-4 2xl:flex-1 mt-4 mb-2">
+        <div class="2xl:float-right">
             <a href="{{$company->path()}}/activity-log" class="py-1 button-primary mr-2">Activity log</a>
             <a href="{{$company->path()}}/leads" class="py-1 button-primary">View all Leads</a>
         </div>
      </div>
 </header>
 <div class="column-container">
-    <div class="column xl:mr-4">
+    <div class="column 2xl:mr-4">
         <div class="company-info py-8 px-2 rounded shadow bg-card flex">
             <div class="w-3/12 mx-6">
                 <div class="rounded-image-container w-full inline-block align-top">
@@ -58,9 +58,9 @@
             </div>
         </div>
     </div>
-    <div class="column xl:ml-4">
+    <div class="column 2xl:ml-4">
         <div class="company-leads-chart">
-            <header class="showCompanySubHeader xl:hidden">
+            <header class="showCompanySubHeader 2xl:hidden">
                 <h2>
                     Chart
                 </h2>
@@ -70,10 +70,11 @@
             </div>
         </div>
         <div class="employees">
-            <header class="showCompanySubHeader">
+            <header class="showCompanySubHeader flex justify-between">
                 <h2>
                     Employees
                 </h2>
+                <a href="{{$company->path()}}/employees" class="py-1 button-primary">View all Employees</a>
             </header>
             @foreach($company->employees()->paginate(4, ["*"], "employees_page") as $employee)
             <div class="flex justify-between items-center bg-card rounded shadow py-4 px-5 mb-2">

@@ -7,6 +7,8 @@ use App\Models\Lead;
 use App\Models\Role;
 use App\Models\User;
 use Faker\Factory;
+use App\Models\Status;
+use Illuminate\Support\Facades\Http;
 
 class CompanyFactory{
     protected $owner;
@@ -67,6 +69,36 @@ class CompanyFactory{
         ]);
         $users->each(function($user)use($company){
             $company->invite($user);
+        });
+        $statuses = Status::all();
+        $users->each(function($user)use($company,$statuses){
+            $leads = $company->accessibleLeads();
+            $leads->each(function($lead)use($company, $user, $statuses){
+                if(rand(0,7)==1){
+                    $newStatusIndex=1;//index van follow up positive
+                    if(rand(0,5)>1){
+                        $newStatusIndex=rand(0,3);
+                    }
+                    $user->leads_changed=$user->leads_changed+1;
+                    if($newStatusIndex==1){
+                         $user->positive_leads=$user->positive_leads+1;
+                    }
+                    $user->update();
+                    $prevStatus=$lead->status;
+                    $lead->status_id=$statuses[$newStatusIndex]->id;
+                    $lead->update();
+                    $lead->activities()->create([
+                        'user_id' => $user->id,
+                        'description' => "updated_lead",
+                        'changes' => [
+                            'before' => ['status'=>$prevStatus->name],
+                            'after' => ['status'=>$lead->status->name]
+                        ],
+                        'note'=>"Changed the status to ".$lead->status->name,
+                        'company_id' => $company->id
+                    ]);
+                }
+            });
         });
     }
 }

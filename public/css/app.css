@@ -31206,7 +31206,6 @@ video {
   align-items: center;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  margin-top: 0.25rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
@@ -31221,15 +31220,16 @@ video {
 }
 
 .nav-bar-item:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgba(147, 197, 253, var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.5;
+  --tw-text-opacity: 1;
+  color: rgba(147, 197, 253, var(--tw-text-opacity));
 }
 
 .nav-bar-item.selected {
   --tw-bg-opacity: 1;
-  background-color: rgba(147, 197, 253, var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.5;
+  background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.3;
+  --tw-text-opacity: 1;
+  color: rgba(59, 130, 246, var(--tw-text-opacity));
 }
 
 .login-input-container {
@@ -31370,7 +31370,7 @@ video {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1536px) {
   .column-container {
     display: flex;
   }

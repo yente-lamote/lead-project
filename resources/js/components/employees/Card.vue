@@ -2,7 +2,7 @@
 <div class="flip-card" v-bind:class="{turned: isActive}">
     <div class="front">
         <div class="flex-1">
-            <img alt="image user" src="/assets/images/companies/default.png" class="shadow object-cover rounded-full mx-auto w-24 h-24"/>
+            <img alt="image user" src="/assets/images/person.jpeg" class="shadow object-cover rounded-full mx-auto w-24 h-24"/>
             <p class="text-center mt-2 text-xl">{{this.employee.name}}</p>
             <p class="text-center text-gray-400 text-sm mb-4">{{this.role.name}}</p>
         </div>
@@ -20,11 +20,12 @@
         <div>
             <div class="flex justify-between mb-2 px-1">
                 <button @click="openModal" class="button-primary">Edit</button>
-                    <form method="POST" class="inline" v-bind:action="`/companies/${this.companyId}/employees/${this.employee.id}`">
-                        <input type="hidden" name="_token" :value="csrf">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="submit" class="button-danger ml-3" value="Remove">
-                    </form>            </div>
+                <form method="POST" class="inline" v-bind:action="`/companies/${this.companyId}/employees/${this.employee.id}`">
+                    <input type="hidden" name="_token" :value="csrf">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" class="button-danger ml-3" value="Remove">
+                </form>            
+            </div>
             <div class="border-t border-gray-400 mb-0 pt-2 text-center">
                 <button @click="turnCard" class="button-primary">Go back</button>
             </div>    

@@ -43,6 +43,8 @@ class LeadsController extends Controller
     public function changeStatus(Lead $lead){
         $this->authorize('update',$lead);
         $lead->setNote(request()->get('note'));
+        request()->validate(['status_id'=>'exists:statuses,id|required']);
+        
         $lead->update(request()->validate(['status_id'=>'exists:statuses,id|required']));
         return response('updated',204); 
     }

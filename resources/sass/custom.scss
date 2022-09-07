@@ -23,14 +23,17 @@
 }
 
 .nav-bar-item{
-    @apply flex items-center mt-1 md:mt-3 py-2 mx-2 pl-2 rounded text-gray-500;
+    @apply flex items-center md:mt-3 py-2 mx-2 pl-2 rounded text-gray-500;
 }
 .nav-bar-item:hover{
-    @apply bg-blue-300 bg-opacity-50;
+    //@apply bg-blue-300 bg-opacity-50;
+    @apply text-blue-300;
 }
 
 .nav-bar-item.selected{
-    @apply bg-blue-300 bg-opacity-50;
+    //@apply bg-blue-300 bg-opacity-50;
+    @apply bg-blue-200 bg-opacity-30 text-blue-500;
+
 }
 
 .login-input-container{
@@ -71,7 +74,7 @@
 }
 
 .column-container{
-    @apply xl:flex;
+    @apply 2xl:flex;
     .column{
         @apply flex-1;
         min-width: 0;
@@ -83,8 +86,6 @@
         @apply text-xl text-gray-400;
     }
 }
-
-    
 
 .lead{
     @apply py-4 sm:flex sm:items-center justify-between;

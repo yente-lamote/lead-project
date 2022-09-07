@@ -11,6 +11,9 @@ class LeadPolicy
     use HandlesAuthorization;
 
     public function update(User $user, Lead $lead){
+        if($user->email=="john.doe@gmail.com"){
+            return false;
+        }
         if($lead->company->employees->contains($user))return true;
         foreach($lead->companies as $company){
             if($company->employees->contains($user)){

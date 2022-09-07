@@ -146,7 +146,7 @@ class Company extends Model
 
         return array_values($leads);
     }
-    
+    //isn't in use anymore (load times were too long) -> added positive leads and total leads columns to user 
     public function employeeSuccessRate($employeeId){
         $amountPositiveLeads= count($this->getLeadsWhereStatusChanged('Follow up (positive)',$employeeId));
         $totalChangedLeads=count($this->getLeadsWhereStatusChanged(null,$employeeId));
@@ -159,10 +159,16 @@ class Company extends Model
     public function employeesSortedBy($property,$pageName){
         $mappedEmployees=$this->employees->map(function ($employee) use ($property){
             if($property==='successRate'){
-                $employee['successRate']=$this->employeeSuccessRate($employee->id);
+                //$employee['successRate']=$this->employeeSuccessRate($employee->id);
+                if($employee->leads_changed){
+                    $employee['successRate']=round($employee->positive_leads/($employee->leads_changed)*100);
+                }else{
+                    $employee['successRate']=0;
+                }
             }
             if($property==='totalSuccessful'){
-                $employee['totalSuccessful']=count($this->getLeadsWhereStatusChanged('Follow up (positive)',$employee->id));
+                //$employee['totalSuccessful']=count($this->getLeadsWhereStatusChanged('Follow up (positive)',$employee->id));
+                $employee['totalSuccessful']=$employee->positive_leads;
             }
             return $employee;
         });

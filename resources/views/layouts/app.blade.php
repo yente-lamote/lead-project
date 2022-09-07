@@ -28,7 +28,7 @@
                 @yield('content')
             </main>
         @else
-            <app-layout>
+            <app-layout :initial-companies="{{Auth::user()->companies}}">
                 <div slot="header-right-side" class="flex items-center">
                     <a class="mr-8 hidden md:inline" href="#" role="button">
                         {{ Auth::user()->name }}

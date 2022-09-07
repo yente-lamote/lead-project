@@ -27,8 +27,8 @@ export default {
         if (inputs[i].checked === true) {
             axios.delete(`${this.urlPrefix}/${inputs[i].value}${this.urlSuffix}`).then(()=>{
                 location.reload();
-            }).catch(()=>{
-                this.error="Something went wrong";
+            }).catch((error) => {
+                this.error = error.response.data.message;
             });
         }
       }

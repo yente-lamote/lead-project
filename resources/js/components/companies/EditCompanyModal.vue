@@ -12,6 +12,9 @@
         <div class="w-full">
             <img ref="image" class="w-3/4 mx-auto mt-2" :src="'/assets/images/companies/'+company.id+'.png'"  @error="imageLoadError"/>
             <input ref="newImage" class="mt-3" type="file" name="fileToUpload" v-on:change="onFileChange" id="fileToUpload" accept=".png">
+            <div class="flex justify-center">
+              <span v-if="error" class="text-red-600 block mt-5">{{ this.error }}</span>
+            </div>
         </div>
       <div class="w-full">
         <div>
@@ -59,6 +62,7 @@ export default {
   data() {
     return {
       company: this.initialCompany,
+      error:""
     }
   },
   methods: {
@@ -86,7 +90,9 @@ export default {
         if(response.status==204){
           location.reload();
         }
-      })
+      }).catch((error) => {
+          this.error = error.response.data.message;
+      });
     },
     
   },

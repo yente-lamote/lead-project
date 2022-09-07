@@ -21,12 +21,20 @@ class DatabaseSeeder extends Seeder
     {   
         RoleFactory::createRoles();
         StatusFactory::createStatuses();
-        $mainUser = User::factory()->create([
-            'email'=>'test@test.be',
+        $userWithNoRights = User::factory()->create([
+            'email'=>'john.doe@gmail.com',
             'password'=>'$2y$12$X0lz/JtphJtE9xsWkFcSSeqLGBykfqMwMZpJC3NHBfI40yBgyNzWe'//test
         ]);
-        $firstCompany = CompanyFactory::ownedBy($mainUser)->withLeads(50)->withExtraLeadAttributes(4)->withEmployees(15)->create();
-        CompanyFactory::ownedBy($mainUser)->withLeads(100)->withEmployees(4)->create();
-        CompanyFactory::ownedBy($mainUser)->withLeads(20)->withExtraLeadAttributes(15)->withEmployees(8)->companyThatCanViewLeads($firstCompany)->create();
+        $mainUser = User::factory()->create([
+            'email'=>'john.doe@company.com',//was test@test.be
+            'password'=>'$2y$12$X0lz/JtphJtE9xsWkFcSSeqLGBykfqMwMZpJC3NHBfI40yBgyNzWe'//test
+        ]);
+        $firstCompany = CompanyFactory::ownedBy($mainUser)->withLeads(30)->withExtraLeadAttributes(2)->withEmployees(8)->create();
+        $secondCompany = CompanyFactory::ownedBy($mainUser)->withLeads(40)->withEmployees(4)->create();
+        $thirdCompany = CompanyFactory::ownedBy($mainUser)->withLeads(20)->withExtraLeadAttributes(5)->withEmployees(8)->companyThatCanViewLeads($firstCompany)->create();
+        
+        $firstCompany->invite($userWithNoRights);
+        $secondCompany->invite($userWithNoRights);
+        $thirdCompany->invite($userWithNoRights);
     }
 }

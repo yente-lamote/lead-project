@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-screen">
-    <sidebar></sidebar>
+    <sidebar :initial-companies="companies"></sidebar>
     <div class="flex-1 h-full overflow-x-hidden overflow-y-auto">
       <custom-header>
         <template slot="header-right-side">
@@ -15,9 +15,17 @@
 <script>
 
 export default{
+  props: {
+    initialCompanies: {
+      default: function () {
+        return {};
+      },
+    },
+  },
   data() {
     return {
       sidebarOpen: false,
+      companies: this.initialCompanies,
     };
   }
 }
