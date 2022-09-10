@@ -31827,6 +31827,10 @@ canvas {
   color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
 
+.logo-font {
+  font-family: Tahoma, sans-serif;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

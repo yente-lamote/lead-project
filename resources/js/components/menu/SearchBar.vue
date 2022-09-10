@@ -1,7 +1,7 @@
 <template>
   <form action="/search">
     <div
-      class="relative text-gray-600 rounded-2xl px-2 focus-within:ring focus-within:border-blue-300 focus-within:text-blue-400 focus-within:border"
+      class="relative text-gray-600 rounded-2xl px-2 focus-within:text-blue-400"
     >
       <span class="absolute inset-y-0 left-0 flex items-center pl-2">
         <button type="submit" aria-label="Search" class="p-1 focus:outline-none" tabindex="-1">
@@ -19,7 +19,7 @@
         </button>
       </span>
       <input
-        type="search"
+        type="text"
         name="query"
         class="py-2 text-sm rounded-md pl-10 focus:outline-none focus:border text-black input w-full"
         placeholder="Search..."

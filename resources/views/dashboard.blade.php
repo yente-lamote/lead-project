@@ -11,7 +11,7 @@
         </div>
     </header>
     <div class="column-container">
-        <div class="column xl:mr-3">
+        <div class="column 2xl:mr-3">
             <div class="card shadow px-2 pb-4 pt-2">
                 @php
                     $data=[];

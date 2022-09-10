@@ -14,14 +14,17 @@
             class="z-30 fixed inset-y-0 left-0 w-56 h-screen transition lg:transition-none duration-300 transform bg-card border-r border-gray-200 lg:translate-x-0 lg:static lg:inset-0"
         >
             <!--fixed z-30 inset-y-0 left-0 w-56 h-screen transition duration-300 transform bg-card border-r border-gray-200 lg:translate-x-0 lg:static lg:inset-0-->
-            <div class="flex justify-center pt-4 md:mb-5 mb-2">
-                <a href="/" class="text-xl font-bold">
-                    Lead-project
+            <div class="pt-3.5 md:mb-5 mb-2">
+                <a href="/" class="text-xl font-semibold flex ml-4">
+                    <img src="/assets/images/logo.png" alt="logo" class="h-7 mr-2"/>
+                    <span class="logo-font">
+                        Lead-project
+                    </span>
                 </a>
             </div>
 
-            <search-bar class="mt-1 py-2 ml-5 md:hidden w-5/6" />
-            <nav>
+            <search-bar class="mt-1 py-2 md:hidden w-5/6" />
+            <nav class="lg:mt-9">
                 <a
                     href="/"
                     class="nav-bar-item"
@@ -52,11 +55,8 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      :class="{ 'rotate-180': open }"
-                      @click="(e)=>{
-                        e.preventDefault();
-                        open=!open}
-                        "
+                      :class="{ 'rotate-180': !companiesClosed }"
+                      @click="openCloseCompanies"
                       >
                       <path
                           stroke-linecap="round"
@@ -67,7 +67,7 @@
                     </svg>
                 </a>
                 
-                <div class="ml-11 text-sm text-gray-400 overflow-hidden" :class="{'h-0':open}">
+                <div class="ml-11 text-sm text-gray-400 overflow-hidden" :class="{'h-0':companiesClosed}">
                     <div v-for="company in companies" class="block py-1 w-4/5">
                         <a :href="'/companies/'+company.id" :class="
                         checkPathnames(['/companies/'+company.id]) &&
@@ -77,6 +77,9 @@
                     </div>
                 </div>
             </nav>
+            <div class="absolute bottom-8 w-full flex items-center">
+                <span class="m-auto text-gray-400">Made by: <a class="text-blue-600" href="https://yentelamote.be">Yente Lamote</a></span>
+            </div>
         </div>
     </div>
 </template>
@@ -93,7 +96,7 @@ export default {
     data() {
         return {
             companies: this.initialCompanies,
-            open:false
+            companiesClosed:false
         };
     },
     methods: {
@@ -118,6 +121,22 @@ export default {
                         .join(".*") +
                     "$"
             ).test(str);
+        },
+        openCloseCompanies:function(e){
+            e.preventDefault();
+            this.companiesClosed=!this.companiesClosed;
+            window.localStorage.setItem('sidebarMyCompaniesClosed',this.companiesClosed);
+        }
+    },beforeMount() {
+        console.log(localStorage.getItem('sidebarMyCompaniesClosed'))
+
+        if(localStorage.getItem('sidebarMyCompaniesClosed')!=null){
+            this.companiesClosed=
+                localStorage.getItem('sidebarMyCompaniesClosed')=="true"?
+                    true:
+                    false
+        }{
+            localStorage.setItem('sidebarMyCompaniesClosed',false)
         }
     }
 };

@@ -30,14 +30,14 @@
         @else
             <app-layout :initial-companies="{{Auth::user()->companies}}">
                 <div slot="header-right-side" class="flex items-center">
-                    <a class="mr-8 hidden md:inline" href="#" role="button">
+                    <a class="hidden md:inline" href="#" role="button">
                         {{ Auth::user()->name }}
                     </a>
 
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <!-- <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
-                        </a>
+                        </a> -->
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf

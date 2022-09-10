@@ -1,5 +1,6 @@
 <template>
-    <header class="h-14 bg-card flex justify-between items-center py-4 px-6 border-b border-gray-200">
+    <header class="bg-card px-6 border-b border-gray-200">
+      <div class="mx-auto lg:w-11/12 py-5 sm=px-0 flex justify-between items-center h-14 ">
         <div class="flex items-center">
           <button
             aria-label="open dashboard"
@@ -26,5 +27,6 @@
           </div>
         </div>
         <slot name="header-right-side"></slot>
+      </div>
       </header>
 </template>
