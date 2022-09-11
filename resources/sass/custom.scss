@@ -261,6 +261,9 @@ canvas{
         @apply p-4 flex items-center;
         .left{
             @apply w-1/6 flex items-center p-1.5;
+            svg{
+                @apply w-full h-full;
+            }
         }
         .right{
             @apply ml-5;

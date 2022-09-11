@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    enabled: false,
+    enabled: true,
     content:[
     './resources/js/components/**/*.vue',
     './resources/views/**/*.blade.php',
