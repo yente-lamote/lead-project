@@ -128,7 +128,6 @@ export default {
             window.localStorage.setItem('sidebarMyCompaniesClosed',this.companiesClosed);
         }
     },beforeMount() {
-        console.log(localStorage.getItem('sidebarMyCompaniesClosed'))
 
         if(localStorage.getItem('sidebarMyCompaniesClosed')!=null){
             this.companiesClosed=
