@@ -29,9 +29,9 @@ class DatabaseSeeder extends Seeder
             'email'=>'john.doe@company.com',//was test@test.be
             'password'=>'$2y$12$X0lz/JtphJtE9xsWkFcSSeqLGBykfqMwMZpJC3NHBfI40yBgyNzWe'//test
         ]);
-        $firstCompany = CompanyFactory::ownedBy($mainUser)->withLeads(30)->withExtraLeadAttributes(2)->withEmployees(8)->create();
-        $secondCompany = CompanyFactory::ownedBy($mainUser)->withLeads(40)->withEmployees(4)->create();
-        $thirdCompany = CompanyFactory::ownedBy($mainUser)->withLeads(20)->withExtraLeadAttributes(5)->withEmployees(8)->companyThatCanViewLeads($firstCompany)->create();
+        $firstCompany = CompanyFactory::ownedBy($mainUser)->withLeads(50)->withExtraLeadAttributes(2)->withEmployees(4)->create();
+        $secondCompany = CompanyFactory::ownedBy($mainUser)->withLeads(100)->withEmployees(4)->create();
+        $thirdCompany = CompanyFactory::ownedBy($mainUser)->withLeads(80)->withExtraLeadAttributes(5)->withEmployees(8)->companyThatCanViewLeads($firstCompany)->create();
         
         $firstCompany->invite($userWithNoRights);
         $secondCompany->invite($userWithNoRights);

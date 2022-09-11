@@ -31,7 +31,7 @@
             <div class="column-container md:flex w-full mt-4">
                 <div class="card mb-4 md:mr-2 column pb-4">
                     <header class="p-4 border-b border-gray-300 mb-2 mr-0.5 flex items-center">
-                        <h3 class="font-bold text-sm">Employees by successful leads</h3>
+                        <h2 class="font-bold text-sm">Employees by successful leads</h2>
                         <sort-by page="employee_successful"></sort-by>
                     </header>
                     @foreach($company->employeesSortedBy('totalSuccessful','employee_successful') as $employee)
@@ -46,7 +46,7 @@
                 </div>
                 <div class="card md:ml-2 mb-4 column pb-4">
                     <header class="px-6 py-4 border-b border-gray-300 mb-2 mr-0.5 flex items-center">
-                        <h3 class="font-bold text-sm">Employees by success rate</h3>
+                        <h2 class="font-bold text-sm">Employees by success rate</h2>
                         <sort-by page="employee_ratio"></sort-by>
                     </header>
                     @foreach($company->employeesSortedBy('successRate','employee_ratio') as $employee)
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-            <h3 class="mt-2 mb-1 text-gray-600 text-xl">Today's statistics</h3>
+            <h2 class="mt-2 mb-1 text-gray-600 text-xl">Today's statistics</h2>
             <div class="small-card-container">
                 <div class="card">
                     <div class="left">

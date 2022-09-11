@@ -25,9 +25,9 @@
                 </div>
             </div>
             <div class="pr-6 flex-1">
-                <h3 class="text-xl mb-1">
+                <p class="text-xl mb-1">
                     {{$company->name}}
-                </h3>
+                </p>
                 <p class="text-md text-gray-400">
                     {{$company->description}}
                 </p>

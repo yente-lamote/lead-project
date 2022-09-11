@@ -16,7 +16,7 @@
             <!--fixed z-30 inset-y-0 left-0 w-56 h-screen transition duration-300 transform bg-card border-r border-gray-200 lg:translate-x-0 lg:static lg:inset-0-->
             <div class="pt-3.5 md:mb-5 mb-2">
                 <a href="/" class="text-xl font-semibold flex ml-4">
-                    <img src="/assets/images/logo.png" alt="logo" class="h-7 mr-2"/>
+                    <img src="/assets/images/logo.png" alt="logo" class="h-7 w-7 mr-2"/>
                     <span class="logo-font">
                         Lead-project
                     </span>
